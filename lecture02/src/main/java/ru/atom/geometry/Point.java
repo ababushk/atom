@@ -3,7 +3,30 @@ package ru.atom.geometry;
 /**
  * Template class for
  */
-public class Point /* super class and interfaces here if necessary */ {
+public class Point implements Collider {
+    private int X;
+    private int Y;
+
+    public int getX() {
+        return X;
+    }
+
+    public void setX(int x) {
+        X = x;
+    }
+
+    public int getY() {
+        return Y;
+    }
+
+    public void setY(int y) {
+        Y = y;
+    }
+
+    public Point(int x, int y) {
+        X = x;
+        Y = y;
+    }
     // fields
     // and methods
 
@@ -20,6 +43,14 @@ public class Point /* super class and interfaces here if necessary */ {
         Point point = (Point) o;
 
         // your code here
-        throw new UnsupportedOperationException();
+        return (point.X == this.X) && (point.Y == this.Y);
+    }
+
+    @Override
+    public boolean isColliding(Collider other) {
+        if (other.equals(this)) {
+            return true;
+        }
+        return false;
     }
 }
